@@ -20,13 +20,21 @@ Example: npm-get-packages -p ~/Documents/Projects/npm-get-packages ./`
     .version(version)
     .option('-p, --path <path>', 'Specify start directory of scan', '/')
     .option('-o, --out <out>', 'Specify out json direction')
+    .option(
+        '-d, --deep',
+        'Deep scan. Include also dependencies of your dependencies',
+        false
+    )
 
 program.parse(process.argv)
 
 const options = program.opts<IOptions>()
 
 async function main(options: IOptions) {
-    const { dependencies, devDependencies } = lookForRepo(options.path)
+    const { dependencies, devDependencies } = lookForRepo(
+        options.path,
+        options.deep
+    )
 
     const packages = {
         dependencies: Array.from(new Set(dependencies)),

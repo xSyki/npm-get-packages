@@ -6,7 +6,7 @@ interface IPackages {
     devDependencies: string[]
 }
 
-export function lookForRepo(dir: string): IPackages {
+export function lookForRepo(dir: string, deep: boolean): IPackages {
     let files: string[]
 
     const packages: {
@@ -26,7 +26,15 @@ export function lookForRepo(dir: string): IPackages {
     if (files.includes('package.json')) {
         const file = readFileSync(`${dir}/package.json`, 'utf8')
 
-        const json = JSON.parse(file)
+        let json
+
+        try {
+            json = JSON.parse(file)
+        } catch {
+            logger.error(`Error parsing ${dir}/package.json`)
+
+            return packages
+        }
 
         const dependencies = Object.keys(json.dependencies || {})
         const devDependencies = Object.keys(json.devDependencies || {})
@@ -43,7 +51,9 @@ export function lookForRepo(dir: string): IPackages {
             ...devDependencies,
         ]
 
-        return packages
+        if (!deep) {
+            return packages
+        }
     }
 
     files
@@ -61,7 +71,7 @@ export function lookForRepo(dir: string): IPackages {
 
             if (!isDir) return
 
-            const { dependencies, devDependencies } = lookForRepo(path)
+            const { dependencies, devDependencies } = lookForRepo(path, deep)
 
             packages.dependencies = [...packages.dependencies, ...dependencies]
             packages.devDependencies = [

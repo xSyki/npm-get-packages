@@ -9,7 +9,8 @@
         "bin/**/*"
     ],
     "bin": {
-        "npm-get-packages": "bin/index.js"
+        "npm-get-packages": "bin/index.js",
+        "ngp": "bin/index.js"
     },
     "scripts": {
         "start": "NODE_ENV=development ts-node ./src/index.ts",
