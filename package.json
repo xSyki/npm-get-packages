@@ -1,6 +1,6 @@
 {
     "name": "npm-get-packages",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Scan directories to find out all of dependencies and devDependencies of npm packages",
     "main": "bin/index.js",
     "files": [
