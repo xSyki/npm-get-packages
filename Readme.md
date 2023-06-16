@@ -66,6 +66,7 @@ Options:
   -V, --version      output the version number
   -p, --path <path>  Specify start directory of scan (default: "/")
   -o, --out <out>    Specify out json direction
+  -d, --deep         Deep scan. Include also dependencies of your dependencies (default: false)
   -h, --help         display help for command
 ```
 
