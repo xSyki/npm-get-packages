@@ -1,0 +1,71 @@
+{
+    "name": "npm-get-packages",
+    "version": "1.0.0",
+    "description": "Scan directories to find out all of dependencies and devDependencies of npm packages",
+    "main": "bin/index.js",
+    "files": [
+        "!lib/__tests__/**/*",
+        "lib/**/*",
+        "bin/**/*"
+    ],
+    "bin": {
+        "npm-get-packages": "bin/index.js"
+    },
+    "scripts": {
+        "start": "NODE_ENV=development ts-node ./src/index.ts",
+        "build": "tsc",
+        "serve": "node ./lib/index.js ",
+        "clean": "rm -rf ./lib/",
+        "prepare": "husky install",
+        "test:watch": "jest --watch",
+        "test": "jest --coverage",
+        "type-check": "tsc --noEmit",
+        "lint": "eslint \"./src/**/*.{js,,ts,,json}\"",
+        "lint-fix": "eslint --fix \"./src/**/*.{js,,ts,,json}\"",
+        "format": "prettier --write \"./src/**/*.{js,ts,json,md}\""
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=19.0"
+    },
+    "dependencies": {
+        "commander": "^10.0.0",
+        "winston": "^3.8.2"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.5.0",
+        "@types/node": "^18.15.11",
+        "@typescript-eslint/eslint-plugin": "^5.57.1",
+        "@typescript-eslint/parser": "^5.57.1",
+        "eslint": "^8.38.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "jest": "^29.5.0",
+        "lint-staged": "^13.2.1",
+        "prettier": "^2.8.7",
+        "ts-jest": "^29.1.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4"
+    },
+    "directories": {
+        "lib": "lib"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xSyki/npm-get-packages.git"
+    },
+    "keywords": [
+        "seo",
+        "tester",
+        "site",
+        "test",
+        "web scraper"
+    ],
+    "author": "xSyki",
+    "types": "./lib/index.d.ts",
+    "bugs": {
+        "url": "https://github.com/xSyki/npm-get-packages/issues"
+    },
+    "homepage": "https://github.com/xSyki/npm-get-packages#readme"
+}
